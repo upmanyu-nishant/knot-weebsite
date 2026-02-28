@@ -1,0 +1,38 @@
+name: Build & deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main          # or whatever branch you develop on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch repository
+        uses: actions/checkout@v4
+        with:
+          # prevent automatic GITHUB_TOKEN persistence so later push works
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: run build
+        run: npm run build
+
+      - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages     # branch that will be served
+          force_orphan: true
+          keep_files: false
