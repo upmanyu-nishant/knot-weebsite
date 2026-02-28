@@ -28,29 +28,17 @@ jobs:
       - name: run build
         run: npm run build
 
-      - name: deploy to gh-pages
+      - name: deploy via docs folder
         run: |
           set -eux
-          # configure git credentials for push
+          # copy build output into docs directory
+          rm -rf docs
+          mkdir docs
+          cp -R dist/* docs/
+
+          # commit the changes back to main branch
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # rewrite origin with token so pushes succeed
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-
-          # make sure remote branch exists
-          git fetch origin gh-pages || true
-
-          # create orphan if necessary
-          if git show-ref --quiet refs/heads/gh-pages; then
-            git checkout gh-pages
-            git rm -rf . || true
-          else
-            git checkout --orphan gh-pages
-          fi
-
-          # copy build artifacts
-          cp -R dist/* .
-          git add --all
-          git commit -m "deploy from action" || echo "nothing to commit"
-          git push --force origin gh-pages
+          git add docs
+          git commit -m "deploy to docs" || echo "no changes to commit"
+          git push origin HEAD:main
