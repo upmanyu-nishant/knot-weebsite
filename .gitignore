@@ -1,4 +1,7 @@
 # ignore node modules
+node_modules/
+
+# previous location (no longer needed)
 openspec/changes/sailing-knots-app/node_modules/
 
 # logs
