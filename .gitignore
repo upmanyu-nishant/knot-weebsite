@@ -1,0 +1,13 @@
+# ignore node modules
+openspec/changes/sailing-knots-app/node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment
+.env
+
+# macOS
+ds_store

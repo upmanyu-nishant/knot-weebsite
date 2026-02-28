@@ -1,0 +1,31 @@
+{
+  "name": "sailing-knots-app",
+  "version": "1.0.0",
+  "description": "A reactive React website for learning sailing knots with video tutorials.",
+  "main": "src/index.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.132.2",
+    "tailwindcss": "^2.2.19"
+  },
+  "devDependencies": {
+    "vite": "^2.6.4",
+    "typescript": "^4.4.3"
+  },
+  "keywords": [
+    "sailing",
+    "knots",
+    "tutorials",
+    "react",
+    "vite",
+    "tailwindcss"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

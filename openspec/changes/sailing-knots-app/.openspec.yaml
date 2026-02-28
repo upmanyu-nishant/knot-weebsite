@@ -1,0 +1,13 @@
+schema: spec-driven
+created: 2026-02-28
+instructions: |
+  Build a reactive React website for sailing knots using Vite and Tailwind CSS.
+  Include:
+  - A gallery for the Bowline, Figure-Eight, and Clove Hitch.
+  - Step-by-step text instructions for each.
+  - A nautical dark-blue theme.
+  - Responsive layout for mobile and desktop.
+  - Interactive 3D knot visualizations using Three.js.
+  - Search and filter functionality by knot difficulty.
+  - Local storage to save user's favorite knots.
+  - Accessibility features (ARIA labels, keyboard navigation).

@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the sailing knots app */
+body {
+    @apply bg-navy text-white;
+}
+
+h1, h2, h3 {
+    @apply font-bold;
+}
+
+.knot-gallery {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.knot-video {
+    @apply rounded-lg overflow-hidden shadow-lg;
+}
+
+.video-player {
+    @apply w-full h-auto;
+}
+
+@media (max-width: 640px) {
+    .knot-gallery {
+        @apply grid-cols-1;
+    }
+}
