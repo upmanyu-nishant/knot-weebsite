@@ -30,9 +30,13 @@ jobs:
 
       - name: deploy to gh-pages
         run: |
+          set -eux
           # configure git credentials for push
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # rewrite origin with token so pushes succeed
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
           # make sure remote branch exists
           git fetch origin gh-pages || true
